@@ -22,46 +22,7 @@ const labelFont = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ezequielgallardo.dev"),
-  title: {
-    default: "Ezequiel Gallardo | Desarrollador Web",
-    template: "%s | Ezequiel Gallardo",
-  },
-  description:
-    "Portafolio de Ezequiel Gallardo, desarrollador web y estudiante de Ingeniería en Sistemas. Interfaces claras, experiencias rápidas y productos web con base técnica sólida.",
   applicationName: "Ezequiel Gallardo Portfolio",
-  authors: [{ name: "Ezequiel Gallardo", url: "https://ezequielgallardo.dev" }],
-  creator: "Ezequiel Gallardo",
-  publisher: "Ezequiel Gallardo",
-  alternates: {
-    canonical: "/",
-  },
-  keywords: [
-    "Ezequiel Gallardo",
-    "desarrollador web",
-    "frontend developer",
-    "Next.js portfolio",
-    "React developer",
-    "portfolio web",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "es_AR",
-    url: "https://ezequielgallardo.dev",
-    siteName: "Ezequiel Gallardo",
-    title: "Ezequiel Gallardo | Desarrollador Web",
-    description:
-      "Portafolio de Ezequiel Gallardo, desarrollador web y estudiante de Ingeniería en Sistemas.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ezequiel Gallardo | Desarrollador Web",
-    description:
-      "Portafolio de Ezequiel Gallardo, desarrollador web y estudiante de Ingeniería en Sistemas.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -74,13 +35,18 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params?: Promise<{ locale?: string }>;
 }>) {
+  const resolvedParams = (await params) ?? {};
+  const locale = resolvedParams.locale === "en" ? "en" : "es";
+
   return (
-    <html lang="es">
+    <html lang={locale}>
       <head>
         <link
           rel="stylesheet"

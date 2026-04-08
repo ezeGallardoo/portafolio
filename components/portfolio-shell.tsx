@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { startTransition, useEffect, useState } from "react";
+import Link from "next/link";
+import { useEffect, useState, type CSSProperties } from "react";
 
 import { siteContentByLocale, type Locale } from "@/data/site-content";
 
@@ -35,8 +36,7 @@ function SocialIcon({ name }: { name: string }) {
   );
 }
 
-export function PortfolioShell() {
-  const [locale, setLocale] = useState<Locale>("es");
+export function PortfolioShell({ locale }: { locale: Locale }) {
   const [activeSection, setActiveSection] = useState("#home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const siteContent = siteContentByLocale[locale];
@@ -84,7 +84,47 @@ export function PortfolioShell() {
 
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [activeSection, locale]);
+  }, [activeSection]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const revealItems = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
+
+    if (revealItems.length === 0) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            if ((entry.target as HTMLElement).dataset.revealOnce === "true") {
+              observer.unobserve(entry.target);
+            }
+            return;
+          }
+
+          entry.target.classList.remove("is-visible");
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -10% 0px",
+      },
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [locale]);
 
   return (
     <main className="portfolio-page">
@@ -126,24 +166,22 @@ export function PortfolioShell() {
 
           <div className={`topbar__actions${isMenuOpen ? " is-open" : ""}`}>
             <div className="locale-switcher" aria-label={siteContent.languageLabel}>
-              <button
-                type="button"
+              <Link
+                href="/es"
                 className={locale === "es" ? "is-active" : undefined}
-                onClick={() => {
-                  startTransition(() => setLocale("es"));
-                }}
+                aria-current={locale === "es" ? "page" : undefined}
+                onClick={() => setIsMenuOpen(false)}
               >
                 ES
-              </button>
-              <button
-                type="button"
+              </Link>
+              <Link
+                href="/en"
                 className={locale === "en" ? "is-active" : undefined}
-                onClick={() => {
-                  startTransition(() => setLocale("en"));
-                }}
+                aria-current={locale === "en" ? "page" : undefined}
+                onClick={() => setIsMenuOpen(false)}
               >
                 EN
-              </button>
+              </Link>
             </div>
             <a className="topbar__cta" href="#contact" onClick={() => setIsMenuOpen(false)}>
               {siteContent.connectLabel}
@@ -155,7 +193,7 @@ export function PortfolioShell() {
       <section className="hero" id="home">
         <div className="hero__leak" aria-hidden="true" />
         <div className="shell hero__grid">
-          <div className="hero__content">
+          <div className="hero__content" data-reveal data-reveal-once="true">
             <div className="hero__badge">{siteContent.hero.badge}</div>
             <h1>
               {siteContent.hero.title[0]} <span>{siteContent.hero.title[1]}</span>
@@ -177,7 +215,12 @@ export function PortfolioShell() {
             </div>
           </div>
 
-          <div className="hero__media">
+          <div
+            className="hero__media"
+            data-reveal
+            data-reveal-once="true"
+            style={{ "--reveal-delay": "90ms" } as CSSProperties}
+          >
             <div className="hero__image-frame">
               <Image
                 src={siteContent.hero.image}
@@ -197,7 +240,11 @@ export function PortfolioShell() {
 
       <section className="process" id="process">
         <div className="shell">
-          <div className="section-heading section-heading--split">
+          <div
+            className="section-heading section-heading--split"
+            data-reveal
+            data-reveal-once="true"
+          >
             <div>
               <span>{siteContent.process.kicker}</span>
               <h2>{siteContent.process.title}</h2>
@@ -207,7 +254,12 @@ export function PortfolioShell() {
 
           <div className="process-grid">
             {siteContent.process.steps.map((step) => (
-              <article key={step.number} className="process-card">
+              <article
+                key={step.number}
+                className="process-card"
+                data-reveal
+                style={{ "--reveal-delay": `${Number(step.number) * 45}ms` } as CSSProperties}
+              >
                 <span className="process-card__index">{step.number}</span>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
@@ -219,7 +271,11 @@ export function PortfolioShell() {
 
       <section className="skills" id="skills">
         <div className="shell">
-          <div className="section-heading section-heading--center">
+          <div
+            className="section-heading section-heading--center"
+            data-reveal
+            data-reveal-once="true"
+          >
             <h2>{siteContent.skills.title}</h2>
             <p>{siteContent.skills.description}</p>
           </div>
@@ -229,6 +285,12 @@ export function PortfolioShell() {
               <article
                 key={card.title}
                 className={`skill-card${card.featured ? " skill-card--featured" : ""}`}
+                data-reveal
+                style={
+                  {
+                    "--reveal-delay": `${siteContent.skills.cards.indexOf(card) * 55}ms`,
+                  } as CSSProperties
+                }
               >
                 <span className="skill-card__icon material-symbols-outlined" aria-hidden="true">
                   {card.icon}
@@ -248,7 +310,11 @@ export function PortfolioShell() {
 
       <section className="projects" id="projects">
         <div className="shell">
-          <div className="section-heading section-heading--split section-heading--projects">
+          <div
+            className="section-heading section-heading--split section-heading--projects"
+            data-reveal
+            data-reveal-once="true"
+          >
             <h2>{siteContent.projects.title}</h2>
             <div>
               <p>{siteContent.projects.description}</p>
@@ -261,40 +327,30 @@ export function PortfolioShell() {
             </div>
           </div>
 
-          <div className="projects-grid">
-            {siteContent.projects.items.map((project, index) => (
-              <article
-                key={project.title}
-                className={`project-card${index === 1 ? " project-card--offset" : ""}`}
-              >
-                <div className="project-card__image">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 760px) 100vw, (max-width: 1080px) 70vw, 42vw"
-                  />
-                </div>
-                <div className="project-card__meta">
-                  <div>
-                    <span>{project.label}</span>
-                    <h3>{project.title}</h3>
-                  </div>
-                  <div className="project-card__arrow">
-                    <span className="material-symbols-outlined" aria-hidden="true">
-                      north_east
-                    </span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <article className="projects-soon" data-reveal style={{ "--reveal-delay": "80ms" } as CSSProperties}>
+            <div className="projects-soon__visual" aria-hidden="true">
+              <span className="projects-soon__ring projects-soon__ring--outer" />
+              <span className="projects-soon__ring projects-soon__ring--inner" />
+              <span className="projects-soon__core" />
+            </div>
+            <div className="projects-soon__copy">
+              <span>{siteContent.projects.statusBadge}</span>
+              <h3>{siteContent.projects.statusTitle}</h3>
+              <p>{siteContent.projects.statusText}</p>
+            </div>
+            <a href={siteContent.projects.archiveHref} className="button button--primary" {...getLinkProps(siteContent.projects.archiveHref)}>
+              {siteContent.projects.archiveCta}
+              <span className="material-symbols-outlined" aria-hidden="true">
+                arrow_forward
+              </span>
+            </a>
+          </article>
         </div>
       </section>
 
       <section className="cta" id="contact">
         <div className="cta__leak" aria-hidden="true" />
-        <div className="shell cta__inner">
+        <div className="shell cta__inner" data-reveal>
           <h2>
             {siteContent.contact.title[0]}
             <br />
@@ -331,7 +387,12 @@ export function PortfolioShell() {
                 {siteContent.contact.secondaryCta}
               </a>
             ) : (
-              <button type="button" className="button button--ghost">
+              <button
+                type="button"
+                className="button button--ghost button--disabled"
+                aria-disabled="true"
+                title={locale === "es" ? "Disponible próximamente" : "Coming soon"}
+              >
                 {siteContent.contact.secondaryCta}
               </button>
             )}

@@ -2,6 +2,7 @@ export type Locale = "es" | "en";
 
 export type SiteContent = {
   brand: string;
+  localeLabel: Locale;
   languageLabel: string;
   connectLabel: string;
   navigation: Array<{ href: string; label: string }>;
@@ -38,11 +39,9 @@ export type SiteContent = {
     description: string;
     archiveCta: string;
     archiveHref: string;
-    items: Array<{
-      label: string;
-      title: string;
-      image: string;
-    }>;
+    statusBadge: string;
+    statusTitle: string;
+    statusText: string;
   };
   contact: {
     title: [string, string];
@@ -70,6 +69,7 @@ const currentYear = new Date().getFullYear();
 export const siteContentByLocale: Record<Locale, SiteContent> = {
   es: {
     brand: "EZEQUIELGALLARDO.DEV",
+    localeLabel: "es",
     languageLabel: "Selector de idioma",
     connectLabel: "Conectar",
     navigation: [
@@ -150,21 +150,13 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     projects: {
       title: "Últimos Proyectos",
       description:
-        "Una selección de trabajos donde combiné desarrollo frontend, criterio visual y una implementación enfocada en rendimiento.",
-      archiveCta: "Ver archivo completo",
-      archiveHref: "https://ezequielgallardo.dev",
-      items: [
-        {
-          label: "Ejemplo / Landing",
-          title: "Landing de servicios",
-          image: "/images/projects/service-landing.svg",
-        },
-        {
-          label: "Ejemplo / Dashboard",
-          title: "Panel administrativo",
-          image: "/images/projects/admin-dashboard.svg",
-        },
-      ],
+        "Estoy preparando una selección más representativa de proyectos reales para mostrar proceso, stack y resultados con mejor contexto.",
+      archiveCta: "Ver GitHub",
+      archiveHref: "https://github.com/ezeGallardoo",
+      statusBadge: "En preparación",
+      statusTitle: "Proyectos próximamente",
+      statusText:
+        "Mientras tanto, podés revisar mi GitHub o escribirme si querés ver trabajos, código o ejemplos más cercanos a tu necesidad.",
     },
     contact: {
       title: ["Construyamos", "algo sólido"],
@@ -178,7 +170,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         { label: "GitHub", href: "https://github.com/ezeGallardoo" },
       ],
       primaryCta: "Enviar mensaje",
-      secondaryCta: "Descargar CV",
+      secondaryCta: "CV próximamente",
       email: "mailto:contacto@ezequielgallardo.dev",
     },
     footer: {
@@ -195,6 +187,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
   },
   en: {
     brand: "EZEQUIELGALLARDO.DEV",
+    localeLabel: "en",
     languageLabel: "Language switcher",
     connectLabel: "Connect",
     navigation: [
@@ -245,7 +238,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
       ],
     },
     skills: {
-      title: "Technical Prowess",
+      title: "Technical Skills",
       description:
         "I work with technologies focused on building fast interfaces, scalable web products, and well-crafted frontend experiences.",
       cards: [
@@ -275,21 +268,13 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     projects: {
       title: "Latest Projects",
       description:
-        "A selection of projects where I combined frontend development, visual judgment, and performance-focused implementation.",
-      archiveCta: "View full archive",
-      archiveHref: "https://ezequielgallardo.dev",
-      items: [
-        {
-          label: "Example / Landing",
-          title: "Service landing page",
-          image: "/images/projects/service-landing.svg",
-        },
-        {
-          label: "Example / Dashboard",
-          title: "Admin dashboard",
-          image: "/images/projects/admin-dashboard.svg",
-        },
-      ],
+        "I'm preparing a more representative selection of real projects to show process, stack, and outcomes with better context.",
+      archiveCta: "View GitHub",
+      archiveHref: "https://github.com/ezeGallardoo",
+      statusBadge: "In progress",
+      statusTitle: "Projects coming soon",
+      statusText:
+        "In the meantime, you can check my GitHub or contact me if you want to review work samples, code, or examples closer to your needs.",
     },
     contact: {
       title: ["Let's build", "something solid"],
@@ -303,7 +288,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         { label: "GitHub", href: "https://github.com/ezeGallardoo" },
       ],
       primaryCta: "Send message",
-      secondaryCta: "Download CV",
+      secondaryCta: "CV coming soon",
       email: "mailto:contacto@ezequielgallardo.dev",
     },
     footer: {
