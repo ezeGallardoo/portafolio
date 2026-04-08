@@ -1,7 +1,7 @@
 import Image from "next/image";
 
+import { PortfolioEnhancements } from "@/components/portfolio-enhancements";
 import { PortfolioHeader } from "@/components/portfolio-header";
-import { PortfolioRevealController } from "@/components/portfolio-reveal-controller";
 import { siteContentByLocale, type Locale } from "@/data/site-content";
 
 function SocialIcon({ name }: { name: string }) {
@@ -85,7 +85,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
   return (
     <main className="portfolio-page">
-      <PortfolioRevealController />
+      <PortfolioEnhancements />
       <PortfolioHeader
         brand={siteContent.brand}
         connectLabel={siteContent.connectLabel}

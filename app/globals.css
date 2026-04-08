@@ -172,6 +172,7 @@ button:focus-visible {
 }
 
 .theme-toggle__thumb {
+  position: relative;
   width: 26px;
   height: 26px;
   display: inline-flex;
@@ -186,8 +187,48 @@ button:focus-visible {
   transition: transform 180ms ease;
 }
 
+.theme-toggle__icon {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.theme-toggle__icon--moon {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
 .theme-toggle.is-dark .theme-toggle__thumb {
   transform: translateX(22px);
+}
+
+.theme-toggle.is-dark .theme-toggle__icon--sun {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.theme-toggle.is-dark .theme-toggle__icon--moon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+html[data-theme="dark"] .theme-toggle__thumb {
+  transform: translateX(22px);
+}
+
+html[data-theme="dark"] .theme-toggle__icon--sun {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+html[data-theme="dark"] .theme-toggle__icon--moon {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .topbar__menu-toggle {
