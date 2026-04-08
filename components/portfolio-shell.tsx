@@ -97,16 +97,41 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
       <section className="hero" id="home">
         <div className="hero__leak" aria-hidden="true" />
         <div className="shell hero__grid">
-          <div className="hero__content" data-reveal data-reveal-once="true">
-            <div className="hero__badge">{siteContent.hero.badge}</div>
-            <h1>
+          <div className="hero__content">
+            <div
+              className="hero__badge"
+              data-reveal
+              data-reveal-variant="fade-up"
+              data-reveal-once="true"
+            >
+              {siteContent.hero.badge}
+            </div>
+            <h1
+              data-reveal
+              data-reveal-variant="hero-title"
+              data-reveal-once="true"
+              style={{ ["--reveal-delay" as string]: "60ms" }}
+            >
               {siteContent.hero.title[0]} <span>{siteContent.hero.title[1]}</span>
               <br />
               <strong>{siteContent.hero.title[2]}</strong>
             </h1>
-            <p>{siteContent.hero.description}</p>
+            <p
+              data-reveal
+              data-reveal-variant="fade-up"
+              data-reveal-once="true"
+              style={{ ["--reveal-delay" as string]: "120ms" }}
+            >
+              {siteContent.hero.description}
+            </p>
 
-            <div className="hero__buttons">
+            <div
+              className="hero__buttons"
+              data-reveal
+              data-reveal-variant="fade-up"
+              data-reveal-once="true"
+              style={{ ["--reveal-delay" as string]: "190ms" }}
+            >
               <a className="button button--primary" href="#contact">
                 {siteContent.hero.primaryCta}
                 <span className="button__icon" aria-hidden="true">
@@ -119,8 +144,14 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div className="hero__media" data-reveal data-reveal-once="true" style={{ ["--reveal-delay" as string]: "90ms" }}>
-            <div className="hero__image-frame">
+          <div className="hero__media">
+            <div
+              className="hero__image-frame"
+              data-reveal
+              data-reveal-variant="hero-media"
+              data-reveal-once="true"
+              style={{ ["--reveal-delay" as string]: "110ms" }}
+            >
               <Image
                 src={siteContent.hero.image}
                 alt="Ezequiel Gallardo portrait"
@@ -130,7 +161,15 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
               />
             </div>
             {linkedInLink ? (
-              <a className="hero__status" href={linkedInLink} {...getLinkProps(linkedInLink)}>
+              <a
+                className="hero__status"
+                href={linkedInLink}
+                data-reveal
+                data-reveal-variant="card-rise"
+                data-reveal-once="true"
+                style={{ ["--reveal-delay" as string]: "220ms" }}
+                {...getLinkProps(linkedInLink)}
+              >
                 <span className="hero__status-head">
                   <span className="hero__status-badge" aria-hidden="true">
                     <SocialIcon name="LinkedIn" />
@@ -149,7 +188,12 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
       <section className="process" id="process">
         <div className="shell">
-          <div className="section-heading section-heading--split" data-reveal data-reveal-once="true">
+          <div
+            className="section-heading section-heading--split"
+            data-reveal
+            data-reveal-variant="fade-up"
+            data-reveal-once="true"
+          >
             <div>
               <span>{siteContent.process.kicker}</span>
               <h2>{siteContent.process.title}</h2>
@@ -163,6 +207,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
                 key={step.number}
                 className="process-card"
                 data-reveal
+                data-reveal-variant="card-rise"
                 style={{ ["--reveal-delay" as string]: `${Number(step.number) * 45}ms` }}
               >
                 <span className="process-card__index">{step.number}</span>
@@ -176,7 +221,12 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
       <section className="skills" id="skills">
         <div className="shell">
-          <div className="section-heading section-heading--center" data-reveal data-reveal-once="true">
+          <div
+            className="section-heading section-heading--center"
+            data-reveal
+            data-reveal-variant="fade-up"
+            data-reveal-once="true"
+          >
             <h2>{siteContent.skills.title}</h2>
             <p>{siteContent.skills.description}</p>
           </div>
@@ -187,6 +237,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
                 key={card.title}
                 className={`skill-card${card.featured ? " skill-card--featured" : ""}`}
                 data-reveal
+                data-reveal-variant="card-rise"
                 style={{ ["--reveal-delay" as string]: `${index * 55}ms` }}
               >
                 <span className="skill-card__icon" aria-hidden="true">
@@ -207,7 +258,12 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
       <section className="projects" id="projects">
         <div className="shell">
-          <div className="section-heading section-heading--split section-heading--projects" data-reveal data-reveal-once="true">
+          <div
+            className="section-heading section-heading--split section-heading--projects"
+            data-reveal
+            data-reveal-variant="fade-up"
+            data-reveal-once="true"
+          >
             <h2>{siteContent.projects.title}</h2>
             <div>
               <p>{siteContent.projects.description}</p>
@@ -220,7 +276,12 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <article className="projects-soon" data-reveal style={{ ["--reveal-delay" as string]: "80ms" }}>
+          <article
+            className="projects-soon"
+            data-reveal
+            data-reveal-variant="feature-rise"
+            style={{ ["--reveal-delay" as string]: "80ms" }}
+          >
             <div className="projects-soon__visual" aria-hidden="true">
               <span className="projects-soon__ring projects-soon__ring--outer" />
               <span className="projects-soon__ring projects-soon__ring--inner" />
@@ -247,7 +308,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
       <section className="cta" id="contact">
         <div className="cta__leak" aria-hidden="true" />
-        <div className="shell cta__inner" data-reveal>
+        <div className="shell cta__inner" data-reveal data-reveal-variant="cta-rise">
           <h2>
             {siteContent.contact.title[0]}
             <br />

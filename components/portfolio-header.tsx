@@ -28,6 +28,7 @@ export function PortfolioHeader({
 }: PortfolioHeaderProps) {
   const [activeSection, setActiveSection] = useState("#home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const sectionIds = ["home", "process", "skills", "projects", "contact"];
@@ -66,8 +67,21 @@ export function PortfolioHeader({
     setIsMenuOpen(false);
   }, [activeSection]);
 
+  useEffect(() => {
+    const syncScrollState = () => {
+      setIsScrolled(window.scrollY > 18);
+    };
+
+    syncScrollState();
+    window.addEventListener("scroll", syncScrollState, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", syncScrollState);
+    };
+  }, []);
+
   return (
-    <header className="topbar">
+    <header className={`topbar${isScrolled ? " is-scrolled" : ""}`}>
       <div className="topbar__inner">
         <a className="topbar__brand" href="#home">
           {brand}

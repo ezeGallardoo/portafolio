@@ -94,6 +94,10 @@ button:focus-visible {
   background: rgba(11, 13, 16, 0.78);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(124, 255, 107, 0.08);
+  transition:
+    background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .topbar__inner {
@@ -104,6 +108,20 @@ button:focus-visible {
   justify-content: space-between;
   gap: 24px;
   padding: 24px 0;
+  transition:
+    padding 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    gap 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.topbar.is-scrolled {
+  background: rgba(11, 13, 16, 0.92);
+  border-bottom-color: rgba(124, 255, 107, 0.12);
+  box-shadow: 0 16px 36px rgba(3, 6, 10, 0.22);
+}
+
+.topbar.is-scrolled .topbar__inner {
+  gap: 20px;
+  padding: 18px 0;
 }
 
 .topbar__brand {
@@ -484,12 +502,45 @@ button:focus-visible {
   border: 1px solid rgba(124, 255, 107, 0.1);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)), var(--surface-light);
   box-shadow: var(--shadow-soft);
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero__image-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(124, 255, 107, 0.08), transparent 34%, rgba(6, 8, 10, 0.1));
+  opacity: 0;
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
 .hero__image-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero__media:hover .hero__image-frame,
+.hero__media:focus-within .hero__image-frame {
+  transform: translate3d(0, -6px, 0);
+  border-color: rgba(124, 255, 107, 0.18);
+  box-shadow: 0 32px 72px rgba(3, 6, 10, 0.42);
+}
+
+.hero__media:hover .hero__image-frame::after,
+.hero__media:focus-within .hero__image-frame::after {
+  opacity: 1;
+}
+
+.hero__media:hover .hero__image-frame img,
+.hero__media:focus-within .hero__image-frame img {
+  transform: scale(1.035);
 }
 
 .hero__status {
@@ -505,10 +556,10 @@ button:focus-visible {
   background: rgba(23, 28, 34, 0.9);
   box-shadow: var(--shadow-glow);
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease,
-    box-shadow 180ms ease;
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero__status-head {
@@ -528,8 +579,9 @@ button:focus-visible {
   color: #0a66c2;
   flex: 0 0 1.6rem;
   transition:
-    background-color 180ms ease,
-    color 180ms ease;
+    background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero__status-badge svg {
@@ -569,7 +621,7 @@ button:focus-visible {
 
 .hero__status:hover,
 .hero__status:focus-visible {
-  transform: translateY(-2px);
+  transform: translate3d(0, -5px, 0);
   border-color: rgba(124, 255, 107, 0.24);
   background: rgba(27, 37, 30, 0.96);
   box-shadow: 0 0 0 1px rgba(124, 255, 107, 0.08), 0 22px 44px rgba(6, 14, 8, 0.34);
@@ -579,6 +631,7 @@ button:focus-visible {
 .hero__status:focus-visible .hero__status-badge {
   background: rgba(124, 255, 107, 0.14);
   color: var(--primary);
+  transform: scale(1.05);
 }
 
 .process {
@@ -627,6 +680,7 @@ button:focus-visible {
 
 .process-card {
   position: relative;
+  overflow: hidden;
   padding: 40px;
   border-radius: 18px;
   border: 1px solid rgba(124, 255, 107, 0.08);
@@ -635,17 +689,31 @@ button:focus-visible {
     var(--surface-light);
   box-shadow: var(--shadow-soft);
   transition:
-    background-color 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    transform 220ms ease;
+    background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(124, 255, 107, 0.18), transparent 36%);
+  opacity: 0;
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
 .process-card:hover {
   background: linear-gradient(180deg, rgba(124, 255, 107, 0.24), rgba(124, 255, 107, 0.08)), #1b2818;
   border-color: rgba(124, 255, 107, 0.28);
   box-shadow: 0 0 0 1px rgba(124, 255, 107, 0.08), 0 24px 46px rgba(4, 10, 7, 0.44);
-  transform: translateY(-2px);
+  transform: translate3d(0, -8px, 0);
+}
+
+.process-card:hover::after {
+  opacity: 1;
 }
 
 .process-card__index {
@@ -655,16 +723,22 @@ button:focus-visible {
   font-family: var(--font-display), sans-serif;
   font-size: 3.8rem;
   font-weight: 800;
+  position: relative;
+  z-index: 1;
 }
 
 .process-card h3 {
   margin-bottom: 16px;
   font-size: 1.35rem;
+  position: relative;
+  z-index: 1;
 }
 
 .process-card p {
   color: var(--muted);
   font-size: 0.94rem;
+  position: relative;
+  z-index: 1;
 }
 
 .process-card:hover p {
@@ -708,14 +782,32 @@ button:focus-visible {
   border: 1px solid rgba(124, 255, 107, 0.1);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)), var(--surface-light);
   box-shadow: var(--shadow-soft);
-  transition: box-shadow 220ms ease, transform 220ms ease;
+  transition:
+    background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(124, 255, 107, 0.16), transparent 36%);
+  opacity: 0;
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
 }
 
 .skill-card:hover {
   background: linear-gradient(180deg, rgba(124, 255, 107, 0.22), rgba(124, 255, 107, 0.06)), #1a2519;
   border-color: rgba(124, 255, 107, 0.26);
-  transform: translateY(-2px);
+  transform: translate3d(0, -8px, 0);
   box-shadow: 0 0 0 1px rgba(124, 255, 107, 0.08), 0 24px 48px rgba(6, 14, 8, 0.34);
+}
+
+.skill-card:hover::after {
+  opacity: 1;
 }
 
 .skill-card--featured {
@@ -735,7 +827,9 @@ button:focus-visible {
   opacity: 0.14;
   line-height: 1;
   pointer-events: none;
-  transition: opacity 220ms ease;
+  transition:
+    opacity 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
   color: currentColor;
   z-index: 0;
 }
@@ -759,7 +853,8 @@ button:focus-visible {
 }
 
 .skill-card:hover .skill-card__icon {
-  opacity: 0.2;
+  opacity: 0.24;
+  transform: translate3d(-4px, 4px, 0) scale(1.04);
 }
 
 .skill-card__tags {
@@ -795,10 +890,10 @@ button:focus-visible {
 
 .projects-soon {
   transition:
-    background-color 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    transform 220ms ease;
+    background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .projects-soon:hover {
@@ -808,7 +903,7 @@ button:focus-visible {
     var(--surface-light);
   border-color: rgba(124, 255, 107, 0.24);
   box-shadow: 0 0 0 1px rgba(124, 255, 107, 0.08), 0 24px 48px rgba(6, 14, 8, 0.3);
-  transform: translateY(-2px);
+  transform: translate3d(0, -8px, 0);
 }
 
 .project-card {
@@ -845,6 +940,7 @@ button:focus-visible {
   aspect-ratio: 1;
   border-radius: 999px;
   background: radial-gradient(circle, rgba(124, 255, 107, 0.12), transparent 65%);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .projects-soon__ring,
@@ -855,17 +951,19 @@ button:focus-visible {
 
 .projects-soon__ring {
   border: 1px solid rgba(124, 255, 107, 0.16);
+  opacity: 0.72;
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .projects-soon__ring--outer {
   inset: 0;
-  animation: orbit 2.6s linear infinite;
+  animation: orbit 7s linear infinite;
 }
 
 .projects-soon__ring--inner {
   inset: 22px;
   border-color: rgba(94, 230, 255, 0.24);
-  animation: orbitReverse 2s linear infinite;
+  animation: orbitReverse 5.4s linear infinite;
 }
 
 .projects-soon__core {
@@ -875,6 +973,24 @@ button:focus-visible {
   box-shadow:
     0 0 0 10px rgba(124, 255, 107, 0.12),
     0 12px 28px rgba(7, 43, 5, 0.28);
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.projects-soon:hover .projects-soon__visual {
+  transform: translate3d(0, -4px, 0) scale(1.02);
+}
+
+.projects-soon:hover .projects-soon__ring {
+  opacity: 0.88;
+}
+
+.projects-soon:hover .projects-soon__core {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 0 12px rgba(124, 255, 107, 0.14),
+    0 16px 32px rgba(7, 43, 5, 0.3);
 }
 
 .projects-soon__copy span {
@@ -1157,22 +1273,64 @@ button:focus-visible {
 
 [data-reveal] {
   --reveal-delay: 0ms;
+  --reveal-duration: 720ms;
+  --reveal-translate-x: 0px;
+  --reveal-translate-y: 32px;
+  --reveal-scale: 1;
+  --reveal-rotate: 0deg;
+}
+
+[data-reveal-variant="fade-up"] {
+  --reveal-translate-y: 26px;
+}
+
+[data-reveal-variant="hero-title"] {
+  --reveal-duration: 780ms;
+  --reveal-translate-y: 42px;
+}
+
+[data-reveal-variant="hero-media"] {
+  --reveal-duration: 820ms;
+  --reveal-translate-x: 26px;
+  --reveal-translate-y: 18px;
+  --reveal-scale: 0.965;
+}
+
+[data-reveal-variant="card-rise"] {
+  --reveal-duration: 720ms;
+  --reveal-translate-y: 28px;
+  --reveal-scale: 0.985;
+}
+
+[data-reveal-variant="feature-rise"] {
+  --reveal-duration: 780ms;
+  --reveal-translate-x: 12px;
+  --reveal-translate-y: 32px;
+  --reveal-scale: 0.985;
+}
+
+[data-reveal-variant="cta-rise"] {
+  --reveal-duration: 760ms;
+  --reveal-translate-y: 30px;
+  --reveal-scale: 0.99;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   [data-reveal] {
     opacity: 0;
-    transform: translate3d(0, 32px, 0);
+    transform: translate3d(var(--reveal-translate-x), var(--reveal-translate-y), 0)
+      scale(var(--reveal-scale))
+      rotate(var(--reveal-rotate));
     transition:
-      opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-      transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+      opacity var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1),
+      transform var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1);
     transition-delay: var(--reveal-delay);
     will-change: opacity, transform;
   }
 
   [data-reveal].is-visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
     will-change: auto;
   }
 }
@@ -1181,6 +1339,24 @@ button:focus-visible {
   [data-reveal] {
     opacity: 1;
     transform: none;
+    transition: none;
+  }
+
+  .hero__image-frame,
+  .hero__image-frame img,
+  .hero__status,
+  .hero__status-badge,
+  .process-card,
+  .process-card::after,
+  .skill-card,
+  .skill-card::after,
+  .skill-card__icon,
+  .projects-soon,
+  .projects-soon__visual,
+  .projects-soon__ring,
+  .projects-soon__core,
+  .topbar,
+  .topbar__inner {
     transition: none;
   }
 
@@ -1420,6 +1596,12 @@ html[data-theme="light"] .topbar {
   border-bottom: 1px solid rgba(56, 45, 21, 0.06);
 }
 
+html[data-theme="light"] .topbar.is-scrolled {
+  background: rgba(247, 243, 234, 0.94);
+  border-bottom-color: rgba(56, 45, 21, 0.1);
+  box-shadow: 0 14px 32px rgba(55, 40, 16, 0.08);
+}
+
 html[data-theme="light"] .topbar__nav a:hover,
 html[data-theme="light"] .topbar__nav a:focus-visible,
 html[data-theme="light"] .topbar__nav a.is-active {
@@ -1502,6 +1684,10 @@ html[data-theme="light"] .hero h1 strong {
 html[data-theme="light"] .hero__image-frame {
   border-color: rgba(56, 45, 21, 0.07);
   background: var(--surface-soft);
+}
+
+html[data-theme="light"] .hero__image-frame::after {
+  background: linear-gradient(180deg, rgba(213, 251, 118, 0.1), transparent 34%, rgba(56, 45, 21, 0.04));
 }
 
 html[data-theme="light"] .hero__status {
