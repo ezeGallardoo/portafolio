@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Locale } from "@/data/site-content";
 
 type NavigationItem = {
@@ -73,20 +72,20 @@ export function PortfolioHeader({
             </span>
           </button>
           <div className="locale-switcher" aria-label={languageLabel}>
-            <Link
+            <a
               href="/es"
               className={locale === "es" ? "is-active" : undefined}
               aria-current={locale === "es" ? "page" : undefined}
             >
               ES
-            </Link>
-            <Link
+            </a>
+            <a
               href="/en"
               className={locale === "en" ? "is-active" : undefined}
               aria-current={locale === "en" ? "page" : undefined}
             >
               EN
-            </Link>
+            </a>
           </div>
           <a className="topbar__cta" href="#contact">
             {connectLabel}

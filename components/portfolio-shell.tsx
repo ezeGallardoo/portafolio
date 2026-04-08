@@ -1,6 +1,3 @@
-import Image from "next/image";
-
-import { PortfolioEnhancements } from "@/components/portfolio-enhancements";
 import { PortfolioHeader } from "@/components/portfolio-header";
 import { siteContentByLocale, type Locale } from "@/data/site-content";
 
@@ -85,7 +82,6 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
   return (
     <main className="portfolio-page">
-      <PortfolioEnhancements />
       <PortfolioHeader
         brand={siteContent.brand}
         connectLabel={siteContent.connectLabel}
@@ -152,13 +148,24 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
               data-reveal-once="true"
               style={{ ["--reveal-delay" as string]: "110ms" }}
             >
-              <Image
-                src={siteContent.hero.image}
-                alt="Ezequiel Gallardo portrait"
-                fill
-                priority
-                sizes="(max-width: 760px) 100vw, (max-width: 1080px) 70vw, 32vw"
-              />
+              <picture>
+                <source
+                  srcSet="/images/profile/perfil-960.jpg 960w, /images/profile/perfil-1440.jpg 1440w"
+                  sizes="(max-width: 760px) 100vw, (max-width: 1080px) 70vw, 32vw"
+                  type="image/jpeg"
+                />
+                <img
+                  src="/images/profile/perfil-960.jpg"
+                  srcSet="/images/profile/perfil-960.jpg 960w, /images/profile/perfil-1440.jpg 1440w"
+                  sizes="(max-width: 760px) 100vw, (max-width: 1080px) 70vw, 32vw"
+                  alt="Ezequiel Gallardo portrait"
+                  width={960}
+                  height={953}
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
             </div>
             {linkedInLink ? (
               <a

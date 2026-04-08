@@ -18,7 +18,6 @@ export type SiteContent = {
       text: string;
       cta: string;
     };
-    image: string;
   };
   process: {
     kicker: string;
@@ -95,7 +94,6 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         text: "Contacto directo para propuestas de trabajo y proyectos.",
         cta: "Abrir perfil",
       },
-      image: "/images/profile/perfil.png",
     },
     process: {
       kicker: "Metodología",
@@ -216,7 +214,6 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         text: "Direct contact for job opportunities and projects.",
         cta: "Open profile",
       },
-      image: "/images/profile/perfil.png",
     },
     process: {
       kicker: "Methodology",
