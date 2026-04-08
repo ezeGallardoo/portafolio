@@ -1,9 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState, type CSSProperties } from "react";
 
+import { PortfolioHeader } from "@/components/portfolio-header";
+import { PortfolioRevealController } from "@/components/portfolio-reveal-controller";
 import { siteContentByLocale, type Locale } from "@/data/site-content";
 
 function SocialIcon({ name }: { name: string }) {
@@ -18,11 +16,44 @@ function SocialIcon({ name }: { name: string }) {
     );
   }
 
-  if (name === "GitHub") {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.62C4 14 3.48 13.13 3.32 12.68C3.23 12.45 2.84 11.74 2.5 11.55C2.22 11.4 1.82 11.03 2.49 11.02C3.12 11.01 3.57 11.6 3.72 11.84C4.44 13.05 5.59 12.71 6.05 12.5C6.12 11.98 6.33 11.63 6.56 11.43C4.78 11.23 2.92 10.54 2.92 7.48C2.92 6.61 3.23 5.9 3.74 5.34C3.66 5.14 3.38 4.32 3.82 3.21C3.82 3.21 4.49 3 6 4.02C6.64 3.85 7.32 3.76 8 3.76C8.68 3.76 9.36 3.85 10 4.02C11.51 2.99 12.18 3.21 12.18 3.21C12.62 4.32 12.34 5.14 12.26 5.34C12.77 5.9 13.08 6.6 13.08 7.48C13.08 10.55 11.21 11.23 9.43 11.43C9.72 11.68 9.97 12.16 9.97 12.91C9.97 13.98 9.96 14.84 9.96 15.21C9.96 15.42 10.11 15.67 10.51 15.59C13.7 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path
+        d="M4.25 10H13.64L9.57 5.93L11 4.5L17.5 11L11 17.5L9.57 16.07L13.64 12H4.25V10Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function SkillIcon({ icon }: { icon: string }) {
+  if (icon === "terminal") {
     return (
-      <svg viewBox="0 0 16 16" aria-hidden="true">
+      <svg viewBox="0 0 96 96" aria-hidden="true">
         <path
-          d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.62C4 14 3.48 13.13 3.32 12.68C3.23 12.45 2.84 11.74 2.5 11.55C2.22 11.4 1.82 11.03 2.49 11.02C3.12 11.01 3.57 11.6 3.72 11.84C4.44 13.05 5.59 12.71 6.05 12.5C6.12 11.98 6.33 11.63 6.56 11.43C4.78 11.23 2.92 10.54 2.92 7.48C2.92 6.61 3.23 5.9 3.74 5.34C3.66 5.14 3.38 4.32 3.82 3.21C3.82 3.21 4.49 3 6 4.02C6.64 3.85 7.32 3.76 8 3.76C8.68 3.76 9.36 3.85 10 4.02C11.51 2.99 12.18 3.21 12.18 3.21C12.62 4.32 12.34 5.14 12.26 5.34C12.77 5.9 13.08 6.6 13.08 7.48C13.08 10.55 11.21 11.23 9.43 11.43C9.72 11.68 9.97 12.16 9.97 12.91C9.97 13.98 9.96 14.84 9.96 15.21C9.96 15.42 10.11 15.67 10.51 15.59C13.7 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"
+          d="M18 24H78C81.314 24 84 26.686 84 30V66C84 69.314 81.314 72 78 72H18C14.686 72 12 69.314 12 66V30C12 26.686 14.686 24 18 24ZM27.75 39.75L38.25 48L27.75 56.25L31.5 61.5L48.75 48L31.5 34.5L27.75 39.75ZM51 57H69V51H51V57Z"
+          fill="currentColor"
+        />
+      </svg>
+    );
+  }
+
+  if (icon === "layers") {
+    return (
+      <svg viewBox="0 0 96 96" aria-hidden="true">
+        <path
+          d="M48 18L15 36L48 54L81 36L48 18ZM24.75 45.75L15 51L48 69L81 51L71.25 45.75L48 58.5L24.75 45.75ZM24.75 60.75L15 66L48 84L81 66L71.25 60.75L48 73.5L24.75 60.75Z"
           fill="currentColor"
         />
       </svg>
@@ -30,15 +61,17 @@ function SocialIcon({ name }: { name: string }) {
   }
 
   return (
-    <span className="material-symbols-outlined" aria-hidden="true">
-      link
-    </span>
+    <svg viewBox="0 0 96 96" aria-hidden="true">
+      <path
+        d="M34.5 31.5L18 48L34.5 64.5L40.5 58.5L30 48L40.5 37.5L34.5 31.5ZM61.5 31.5L55.5 37.5L66 48L55.5 58.5L61.5 64.5L78 48L61.5 31.5Z"
+        fill="currentColor"
+      />
+      <path d="M45.1 72H54.1L64.9 24H55.9L45.1 72Z" fill="currentColor" />
+    </svg>
   );
 }
 
 export function PortfolioShell({ locale }: { locale: Locale }) {
-  const [activeSection, setActiveSection] = useState("#home");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const siteContent = siteContentByLocale[locale];
   const contactEmail = siteContent.contact.email.replace(/^mailto:/, "");
   const getLinkProps = (href: string) =>
@@ -49,146 +82,16 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
         }
       : {};
 
-  useEffect(() => {
-    const sectionIds = ["home", "process", "skills", "projects", "contact"];
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => section !== null);
-
-    if (sections.length === 0) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (visibleEntries.length > 0) {
-          setActiveSection(`#${visibleEntries[0].target.id}`);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -45% 0px",
-        threshold: [0.2, 0.35, 0.5, 0.7],
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [activeSection]);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-
-    const revealItems = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-reveal]"),
-    );
-
-    if (revealItems.length === 0) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            if ((entry.target as HTMLElement).dataset.revealOnce === "true") {
-              observer.unobserve(entry.target);
-            }
-            return;
-          }
-
-          entry.target.classList.remove("is-visible");
-        });
-      },
-      {
-        threshold: 0.18,
-        rootMargin: "0px 0px -10% 0px",
-      },
-    );
-
-    revealItems.forEach((item) => observer.observe(item));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [locale]);
-
   return (
     <main className="portfolio-page">
-      <header className="topbar">
-        <div className="topbar__inner">
-          <a className="topbar__brand" href="#home">
-            {siteContent.brand}
-          </a>
-
-          <button
-            type="button"
-            className={`topbar__menu-toggle${isMenuOpen ? " is-open" : ""}`}
-            aria-label={isMenuOpen ? "Cerrar navegación" : "Abrir navegación"}
-            aria-expanded={isMenuOpen}
-            aria-controls="site-navigation"
-            onClick={() => setIsMenuOpen((current) => !current)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-
-          <nav
-            id="site-navigation"
-            className={`topbar__nav${isMenuOpen ? " is-open" : ""}`}
-            aria-label={siteContent.languageLabel}
-          >
-            {siteContent.navigation.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className={activeSection === item.href ? "is-active" : undefined}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className={`topbar__actions${isMenuOpen ? " is-open" : ""}`}>
-            <div className="locale-switcher" aria-label={siteContent.languageLabel}>
-              <Link
-                href="/es"
-                className={locale === "es" ? "is-active" : undefined}
-                aria-current={locale === "es" ? "page" : undefined}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                ES
-              </Link>
-              <Link
-                href="/en"
-                className={locale === "en" ? "is-active" : undefined}
-                aria-current={locale === "en" ? "page" : undefined}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                EN
-              </Link>
-            </div>
-            <a className="topbar__cta" href="#contact" onClick={() => setIsMenuOpen(false)}>
-              {siteContent.connectLabel}
-            </a>
-          </div>
-        </div>
-      </header>
+      <PortfolioRevealController />
+      <PortfolioHeader
+        brand={siteContent.brand}
+        connectLabel={siteContent.connectLabel}
+        languageLabel={siteContent.languageLabel}
+        locale={locale}
+        navigation={siteContent.navigation}
+      />
 
       <section className="hero" id="home">
         <div className="hero__leak" aria-hidden="true" />
@@ -205,8 +108,8 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
             <div className="hero__buttons">
               <a className="button button--primary" href="#contact">
                 {siteContent.hero.primaryCta}
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  arrow_forward
+                <span className="button__icon" aria-hidden="true">
+                  <ArrowIcon />
                 </span>
               </a>
               <a className="button button--ghost" href={siteContent.hero.secondaryHref}>
@@ -215,12 +118,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div
-            className="hero__media"
-            data-reveal
-            data-reveal-once="true"
-            style={{ "--reveal-delay": "90ms" } as CSSProperties}
-          >
+          <div className="hero__media" data-reveal data-reveal-once="true" style={{ ["--reveal-delay" as string]: "90ms" }}>
             <div className="hero__image-frame">
               <Image
                 src={siteContent.hero.image}
@@ -240,11 +138,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
       <section className="process" id="process">
         <div className="shell">
-          <div
-            className="section-heading section-heading--split"
-            data-reveal
-            data-reveal-once="true"
-          >
+          <div className="section-heading section-heading--split" data-reveal data-reveal-once="true">
             <div>
               <span>{siteContent.process.kicker}</span>
               <h2>{siteContent.process.title}</h2>
@@ -258,7 +152,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
                 key={step.number}
                 className="process-card"
                 data-reveal
-                style={{ "--reveal-delay": `${Number(step.number) * 45}ms` } as CSSProperties}
+                style={{ ["--reveal-delay" as string]: `${Number(step.number) * 45}ms` }}
               >
                 <span className="process-card__index">{step.number}</span>
                 <h3>{step.title}</h3>
@@ -271,29 +165,21 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
       <section className="skills" id="skills">
         <div className="shell">
-          <div
-            className="section-heading section-heading--center"
-            data-reveal
-            data-reveal-once="true"
-          >
+          <div className="section-heading section-heading--center" data-reveal data-reveal-once="true">
             <h2>{siteContent.skills.title}</h2>
             <p>{siteContent.skills.description}</p>
           </div>
 
           <div className="skills-grid">
-            {siteContent.skills.cards.map((card) => (
+            {siteContent.skills.cards.map((card, index) => (
               <article
                 key={card.title}
                 className={`skill-card${card.featured ? " skill-card--featured" : ""}`}
                 data-reveal
-                style={
-                  {
-                    "--reveal-delay": `${siteContent.skills.cards.indexOf(card) * 55}ms`,
-                  } as CSSProperties
-                }
+                style={{ ["--reveal-delay" as string]: `${index * 55}ms` }}
               >
-                <span className="skill-card__icon material-symbols-outlined" aria-hidden="true">
-                  {card.icon}
+                <span className="skill-card__icon" aria-hidden="true">
+                  <SkillIcon icon={card.icon} />
                 </span>
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
@@ -310,24 +196,20 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
       <section className="projects" id="projects">
         <div className="shell">
-          <div
-            className="section-heading section-heading--split section-heading--projects"
-            data-reveal
-            data-reveal-once="true"
-          >
+          <div className="section-heading section-heading--split section-heading--projects" data-reveal data-reveal-once="true">
             <h2>{siteContent.projects.title}</h2>
             <div>
               <p>{siteContent.projects.description}</p>
-              <a href={siteContent.projects.archiveHref}>
+              <a href={siteContent.projects.archiveHref} {...getLinkProps(siteContent.projects.archiveHref)}>
                 <span>{siteContent.projects.archiveCta}</span>
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  arrow_forward
+                <span className="button__icon button__icon--inline" aria-hidden="true">
+                  <ArrowIcon />
                 </span>
               </a>
             </div>
           </div>
 
-          <article className="projects-soon" data-reveal style={{ "--reveal-delay": "80ms" } as CSSProperties}>
+          <article className="projects-soon" data-reveal style={{ ["--reveal-delay" as string]: "80ms" }}>
             <div className="projects-soon__visual" aria-hidden="true">
               <span className="projects-soon__ring projects-soon__ring--outer" />
               <span className="projects-soon__ring projects-soon__ring--inner" />
@@ -338,10 +220,14 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
               <h3>{siteContent.projects.statusTitle}</h3>
               <p>{siteContent.projects.statusText}</p>
             </div>
-            <a href={siteContent.projects.archiveHref} className="button button--primary" {...getLinkProps(siteContent.projects.archiveHref)}>
+            <a
+              href={siteContent.projects.archiveHref}
+              className="button button--primary"
+              {...getLinkProps(siteContent.projects.archiveHref)}
+            >
               {siteContent.projects.archiveCta}
-              <span className="material-symbols-outlined" aria-hidden="true">
-                arrow_forward
+              <span className="button__icon" aria-hidden="true">
+                <ArrowIcon />
               </span>
             </a>
           </article>

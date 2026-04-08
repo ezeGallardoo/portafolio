@@ -35,22 +35,6 @@ body {
   font-family: var(--font-body), sans-serif;
 }
 
-.material-symbols-outlined {
-  font-family: "Material Symbols Outlined";
-  font-style: normal;
-  font-weight: 400;
-  speak: none;
-  display: inline-block;
-  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -213,17 +197,32 @@ button:focus-visible {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
 }
 
-.button--primary .material-symbols-outlined {
-  font-size: 1rem;
-  transition: transform 180ms ease;
-}
-
 .button--primary:hover {
   background: var(--primary);
 }
 
-.button--primary:hover .material-symbols-outlined {
+.button--primary:hover .button__icon {
   transform: translateX(2px);
+}
+
+.button__icon {
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 180ms ease;
+}
+
+.button__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.button__icon--inline {
+  width: 0.95rem;
+  height: 0.95rem;
 }
 
 .button--ghost {
@@ -585,14 +584,23 @@ button:focus-visible {
   position: absolute;
   top: 20px;
   right: 20px;
+  width: 96px;
+  height: 96px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0.14;
-  font-size: 96px;
-  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 48;
   line-height: 1;
   pointer-events: none;
   transition: opacity 220ms ease;
   color: currentColor;
   z-index: 0;
+}
+
+.skill-card__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .skill-card h3 {
@@ -796,10 +804,6 @@ button:focus-visible {
   color: #ffffff;
 }
 
-.project-card__arrow .material-symbols-outlined {
-  font-size: 1rem;
-}
-
 .section-heading--projects {
   align-items: flex-start;
 }
@@ -918,12 +922,10 @@ button:focus-visible {
   flex: 0 0 1.25rem;
 }
 
-.cta__social-icon svg,
-.cta__social-icon .material-symbols-outlined {
+.cta__social-icon svg {
   display: block;
   width: 1.25rem;
   height: 1.25rem;
-  font-size: 1.25rem;
 }
 
 .cta__social span:last-child {
