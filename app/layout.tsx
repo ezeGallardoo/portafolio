@@ -30,6 +30,7 @@ export const viewport: Viewport = {
 const uiBootScript = `
 (() => {
   const storageKey = "portfolio-theme";
+  document.documentElement.dataset.motion = "base";
   const applyTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
   };

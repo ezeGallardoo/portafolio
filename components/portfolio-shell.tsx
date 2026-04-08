@@ -1,3 +1,4 @@
+import { PortfolioEnhancements } from "@/components/portfolio-enhancements";
 import { PortfolioHeader } from "@/components/portfolio-header";
 import { siteContentByLocale, type Locale } from "@/data/site-content";
 
@@ -82,6 +83,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
 
   return (
     <main className="portfolio-page">
+      <PortfolioEnhancements />
       <PortfolioHeader
         brand={siteContent.brand}
         connectLabel={siteContent.connectLabel}

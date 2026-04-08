@@ -1357,20 +1357,22 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  [data-reveal] {
+  html[data-motion="enhanced"] [data-reveal] {
     opacity: 0;
     transform: translate3d(var(--reveal-translate-x), var(--reveal-translate-y), 0)
       scale(var(--reveal-scale))
       rotate(var(--reveal-rotate));
-    animation: reveal-enter var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: var(--reveal-delay);
+    transition:
+      opacity var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1),
+      transform var(--reveal-duration) cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay);
+    will-change: opacity, transform;
   }
-}
 
-@keyframes reveal-enter {
-  to {
+  html[data-motion="enhanced"] [data-reveal].is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    will-change: auto;
   }
 }
 
