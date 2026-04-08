@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { ThemeToggle } from "@/components/theme-toggle";
 import type { Locale } from "@/data/site-content";
 
 type NavigationItem = {
@@ -103,6 +104,7 @@ export function PortfolioHeader({
         </nav>
 
         <div className={`topbar__actions${isMenuOpen ? " is-open" : ""}`}>
+          <ThemeToggle locale={locale} />
           <div className="locale-switcher" aria-label={languageLabel}>
             <Link
               href="/es"

@@ -31,9 +31,23 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f0f0f",
-  colorScheme: "light",
+  themeColor: "#0b0d10",
+  colorScheme: "dark light",
 };
+
+const themeScript = `
+(() => {
+  try {
+    const storageKey = "portfolio-theme";
+    const savedTheme = window.localStorage.getItem(storageKey);
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const theme = savedTheme === "dark" || savedTheme === "light" ? savedTheme : systemTheme;
+    document.documentElement.dataset.theme = theme;
+  } catch {
+    document.documentElement.dataset.theme = "light";
+  }
+})();
+`;
 
 export default async function RootLayout({
   children,
@@ -46,7 +60,10 @@ export default async function RootLayout({
   const locale = resolvedParams.locale === "en" ? "en" : "es";
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className={`${displayFont.variable} ${bodyFont.variable} ${labelFont.variable}`}>
         {children}
       </body>

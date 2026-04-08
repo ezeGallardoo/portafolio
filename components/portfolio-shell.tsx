@@ -74,6 +74,7 @@ function SkillIcon({ icon }: { icon: string }) {
 export function PortfolioShell({ locale }: { locale: Locale }) {
   const siteContent = siteContentByLocale[locale];
   const contactEmail = siteContent.contact.email.replace(/^mailto:/, "");
+  const linkedInLink = siteContent.contact.links.find((item) => item.label === "LinkedIn")?.href;
   const getLinkProps = (href: string) =>
     href.startsWith("http")
       ? {
@@ -128,10 +129,20 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
                 sizes="(max-width: 760px) 100vw, (max-width: 1080px) 70vw, 32vw"
               />
             </div>
-            <div className="hero__status">
-              <p>{siteContent.hero.statusTitle}</p>
-              <strong>{siteContent.hero.statusText}</strong>
-            </div>
+            {linkedInLink ? (
+              <a className="hero__status" href={linkedInLink} {...getLinkProps(linkedInLink)}>
+                <span className="hero__status-head">
+                  <span className="hero__status-badge" aria-hidden="true">
+                    <SocialIcon name="LinkedIn" />
+                  </span>
+                  <p>{siteContent.hero.status.label}</p>
+                </span>
+                <strong>{siteContent.hero.status.text}</strong>
+                <span className="hero__status-link">
+                  {siteContent.hero.status.cta}
+                </span>
+              </a>
+            ) : null}
           </div>
         </div>
       </section>

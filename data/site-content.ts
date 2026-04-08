@@ -13,8 +13,11 @@ export type SiteContent = {
     primaryCta: string;
     secondaryCta: string;
     secondaryHref?: string;
-    statusTitle: string;
-    statusText: string;
+    status: {
+      label: string;
+      text: string;
+      cta: string;
+    };
     image: string;
   };
   process: {
@@ -87,8 +90,11 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
       primaryCta: "Hablemos del proyecto",
       secondaryCta: "Ver proyectos",
       secondaryHref: "#projects",
-      statusTitle: "Estado",
-      statusText: "Disponible para proyectos freelance, colaboraciones y nuevas oportunidades",
+      status: {
+        label: "LinkedIn",
+        text: "Contacto directo para propuestas de trabajo y proyectos.",
+        cta: "Abrir perfil",
+      },
       image: "/images/profile/perfil.png",
     },
     process: {
@@ -205,8 +211,11 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
       primaryCta: "Let's talk",
       secondaryCta: "View projects",
       secondaryHref: "#projects",
-      statusTitle: "Status",
-      statusText: "Available for freelance work, collaborations, and new opportunities",
+      status: {
+        label: "LinkedIn",
+        text: "Direct contact for job opportunities and projects.",
+        cta: "Open profile",
+      },
       image: "/images/profile/perfil.png",
     },
     process: {
