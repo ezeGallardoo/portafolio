@@ -50,7 +50,6 @@ export type SiteContent = {
     links: Array<{
       label: string;
       href: string;
-      icon: string;
     }>;
     primaryCta: string;
     secondaryCta: string;
@@ -59,7 +58,10 @@ export type SiteContent = {
   };
   footer: {
     copy: string;
-    links: string[];
+    links: Array<{
+      label: string;
+      href: string;
+    }>;
   };
 };
 
@@ -169,8 +171,11 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
       description:
         "Si estás buscando un desarrollador web para crear o mejorar un producto digital, podemos hablar sobre objetivos, alcance y próximos pasos.",
       links: [
-        { label: "LinkedIn", href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios", icon: "link" },
-        { label: "GitHub", href: "https://github.com/ezeGallardoo", icon: "code" },
+        {
+          label: "LinkedIn",
+          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        },
+        { label: "GitHub", href: "https://github.com/ezeGallardoo" },
       ],
       primaryCta: "Enviar mensaje",
       secondaryCta: "Descargar CV",
@@ -178,7 +183,14 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     },
     footer: {
       copy: `© ${currentYear} EZEQUIEL GALLARDO. TODOS LOS DERECHOS RESERVADOS.`,
-      links: ["Github", "LinkedIn", "Código Fuente"],
+      links: [
+        { label: "GitHub", href: "https://github.com/ezeGallardoo" },
+        {
+          label: "LinkedIn",
+          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        },
+        { label: "contacto@ezequielgallardo.dev", href: "mailto:contacto@ezequielgallardo.dev" },
+      ],
     },
   },
   en: {
@@ -284,8 +296,11 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
       description:
         "If you're looking for a web developer to build or improve a digital product, we can talk about goals, scope, and next steps.",
       links: [
-        { label: "LinkedIn", href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios", icon: "link" },
-        { label: "GitHub", href: "https://github.com/ezeGallardoo", icon: "code" },
+        {
+          label: "LinkedIn",
+          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        },
+        { label: "GitHub", href: "https://github.com/ezeGallardoo" },
       ],
       primaryCta: "Send message",
       secondaryCta: "Download CV",
@@ -293,7 +308,14 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     },
     footer: {
       copy: `© ${currentYear} EZEQUIEL GALLARDO. ALL RIGHTS RESERVED.`,
-      links: ["Github", "LinkedIn", "Source Code"],
+      links: [
+        { label: "GitHub", href: "https://github.com/ezeGallardoo" },
+        {
+          label: "LinkedIn",
+          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+        },
+        { label: "contacto@ezequielgallardo.dev", href: "mailto:contacto@ezequielgallardo.dev" },
+      ],
     },
   },
 };
