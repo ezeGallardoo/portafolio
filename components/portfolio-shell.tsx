@@ -90,6 +90,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
         languageLabel={siteContent.languageLabel}
         locale={locale}
         navigation={siteContent.navigation}
+        navigationLabel={siteContent.navigationLabel}
       />
 
       <section className="hero" id="home">
@@ -285,6 +286,34 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
             </div>
           </div>
 
+          {siteContent.projects.items.map((project) => (
+            <article
+              key={project.title}
+              className="skill-card featured-project"
+              data-reveal
+              data-reveal-variant="feature-rise"
+            >
+              <div className="featured-project__copy">
+                <span className="featured-project__period">{project.period}</span>
+                <h3>{project.title}</h3>
+                <p>{project.text}</p>
+                <ul className="skill-card__tags">
+                  {project.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="featured-project__details">
+                <ul className="featured-project__highlights">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+                <p className="featured-project__note">{project.note}</p>
+              </div>
+            </article>
+          ))}
+
           <article
             className="projects-soon"
             data-reveal
@@ -350,7 +379,12 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
               {siteContent.contact.primaryCta}
             </a>
             {siteContent.contact.secondaryHref ? (
-              <a className="button button--ghost" href={siteContent.contact.secondaryHref}>
+              <a
+                className="button button--ghost"
+                href={siteContent.contact.secondaryHref}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {siteContent.contact.secondaryCta}
               </a>
             ) : (

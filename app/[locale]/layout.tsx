@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 const displayFont = Space_Grotesk({
   variable: "--font-display",
@@ -108,15 +108,16 @@ const uiBootScript = `
 })();
 `;
 
+export const dynamicParams = false;
+
 export default async function RootLayout({
   children,
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params?: Promise<{ locale?: string }>;
+  params: Promise<{ locale: string }>;
 }>) {
-  const resolvedParams = (await params) ?? {};
-  const locale = resolvedParams.locale === "en" ? "en" : "es";
+  const { locale } = await params;
 
   return (
     <html lang={locale} suppressHydrationWarning>

@@ -4,6 +4,7 @@ export type SiteContent = {
   brand: string;
   localeLabel: Locale;
   languageLabel: string;
+  navigationLabel: string;
   connectLabel: string;
   navigation: Array<{ href: string; label: string }>;
   hero: {
@@ -41,6 +42,14 @@ export type SiteContent = {
     description: string;
     archiveCta: string;
     archiveHref: string;
+    items: Array<{
+      title: string;
+      period: string;
+      text: string;
+      highlights: string[];
+      tags: string[];
+      note: string;
+    }>;
     statusBadge: string;
     statusTitle: string;
     statusText: string;
@@ -73,6 +82,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     brand: "EZEQUIELGALLARDO.DEV",
     localeLabel: "es",
     languageLabel: "Selector de idioma",
+    navigationLabel: "Navegación principal",
     connectLabel: "Conectar",
     navigation: [
       { href: "#home", label: "Inicio" },
@@ -154,13 +164,27 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     projects: {
       title: "Últimos Proyectos",
       description:
-        "Estoy preparando una selección más representativa de proyectos reales para mostrar proceso, stack y resultados con mejor contexto.",
+        "Una selección de proyectos full stack con foco en producto, datos bien modelados y código testeado.",
       archiveCta: "Ver GitHub",
       archiveHref: "https://github.com/ezeGallardoo",
+      items: [
+        {
+          title: "Finza — Finanzas personales",
+          period: "2025 – 2026",
+          text: "Aplicación multiusuario para registrar ingresos y gastos, administrar cuentas, presupuestos por categoría y metas de ahorro.",
+          highlights: [
+            "API REST con Route Handlers de Next.js y Prisma sobre PostgreSQL.",
+            "Datos aislados por usuario y contraseñas cifradas con bcrypt.",
+            "Dashboard de analítica y tests de la API con Vitest.",
+          ],
+          tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Vitest"],
+          note: "Código privado · disponible a pedido",
+        },
+      ],
       statusBadge: "En preparación",
-      statusTitle: "Proyectos próximamente",
+      statusTitle: "Más proyectos próximamente",
       statusText:
-        "Mientras tanto, podés revisar mi GitHub o escribirme si querés ver trabajos, código o ejemplos más cercanos a tu necesidad.",
+        "Estoy documentando más proyectos. Mientras tanto, podés revisar mi GitHub o escribirme si querés ver código o ejemplos más cercanos a tu necesidad.",
     },
     contact: {
       title: ["Construyamos", "algo sólido"],
@@ -174,8 +198,9 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         { label: "GitHub", href: "https://github.com/ezeGallardoo" },
       ],
       primaryCta: "Enviar mensaje",
-      secondaryCta: "CV próximamente",
+      secondaryCta: "Descargar CV",
       email: "mailto:contacto@ezequielgallardo.dev",
+      secondaryHref: "/cv/ezequiel-gallardo-cv-es.pdf",
     },
     footer: {
       copy: `© ${currentYear} EZEQUIEL GALLARDO. TODOS LOS DERECHOS RESERVADOS.`,
@@ -193,6 +218,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     brand: "EZEQUIELGALLARDO.DEV",
     localeLabel: "en",
     languageLabel: "Language switcher",
+    navigationLabel: "Main navigation",
     connectLabel: "Connect",
     navigation: [
       { href: "#home", label: "Home" },
@@ -274,13 +300,27 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     projects: {
       title: "Latest Projects",
       description:
-        "I'm preparing a more representative selection of real projects to show process, stack, and outcomes with better context.",
+        "A selection of full stack projects focused on product, well-modeled data, and tested code.",
       archiveCta: "View GitHub",
       archiveHref: "https://github.com/ezeGallardoo",
+      items: [
+        {
+          title: "Finza — Personal finance",
+          period: "2025 – 2026",
+          text: "Multi-user app to track income and expenses, manage accounts, category budgets, and savings goals.",
+          highlights: [
+            "REST API built with Next.js Route Handlers and Prisma on PostgreSQL.",
+            "Per-user data isolation and bcrypt-hashed passwords.",
+            "Analytics dashboard and API tests with Vitest.",
+          ],
+          tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Vitest"],
+          note: "Private code · available on request",
+        },
+      ],
       statusBadge: "In progress",
-      statusTitle: "Projects coming soon",
+      statusTitle: "More projects coming soon",
       statusText:
-        "In the meantime, you can check my GitHub or contact me if you want to review work samples, code, or examples closer to your needs.",
+        "I'm documenting more projects. In the meantime, you can check my GitHub or contact me if you want to review code or examples closer to your needs.",
     },
     contact: {
       title: ["Let's build", "something solid"],
@@ -294,8 +334,9 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         { label: "GitHub", href: "https://github.com/ezeGallardoo" },
       ],
       primaryCta: "Send message",
-      secondaryCta: "CV coming soon",
+      secondaryCta: "Download resume",
       email: "mailto:contacto@ezequielgallardo.dev",
+      secondaryHref: "/cv/ezequiel-gallardo-cv-en.pdf",
     },
     footer: {
       copy: `© ${currentYear} EZEQUIEL GALLARDO. ALL RIGHTS RESERVED.`,

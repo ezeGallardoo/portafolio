@@ -75,6 +75,7 @@ export async function generateMetadata({
       languages: {
         es: "/es",
         en: "/en",
+        "x-default": "/es",
       },
     },
     keywords: content.keywords,

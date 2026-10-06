@@ -11,6 +11,7 @@ type PortfolioHeaderProps = {
   languageLabel: string;
   locale: Locale;
   navigation: NavigationItem[];
+  navigationLabel: string;
 };
 
 export function PortfolioHeader({
@@ -19,6 +20,7 @@ export function PortfolioHeader({
   languageLabel,
   locale,
   navigation,
+  navigationLabel,
 }: PortfolioHeaderProps) {
   return (
     <header className="topbar">
@@ -44,7 +46,7 @@ export function PortfolioHeader({
         <nav
           id="site-navigation"
           className="topbar__nav"
-          aria-label={languageLabel}
+          aria-label={navigationLabel}
         >
           {navigation.map((item) => (
             <a
@@ -71,7 +73,7 @@ export function PortfolioHeader({
               </span>
             </span>
           </button>
-          <div className="locale-switcher" aria-label={languageLabel}>
+          <div className="locale-switcher" role="group" aria-label={languageLabel}>
             <a
               href="/es"
               className={locale === "es" ? "is-active" : undefined}

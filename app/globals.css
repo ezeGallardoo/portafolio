@@ -959,6 +959,59 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   align-items: start;
 }
 
+.featured-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 48px;
+  margin-bottom: 32px;
+}
+
+.featured-project__copy,
+.featured-project__details {
+  position: relative;
+  z-index: 1;
+}
+
+.featured-project__period {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--primary);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.featured-project__highlights {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.featured-project__highlights li::marker {
+  color: var(--primary);
+}
+
+.featured-project__note {
+  margin-top: 28px;
+  font-size: 0.85rem;
+}
+
+html[data-theme="light"] .featured-project__period,
+html[data-theme="light"] .featured-project__highlights li::marker {
+  color: #3f6b00;
+}
+
+@media (max-width: 1080px) {
+  .featured-project {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
 .projects-soon {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr) auto;
