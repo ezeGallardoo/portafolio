@@ -120,7 +120,7 @@ El favicon está en:
 
 ## Notas
 
-- El CTA secundario de contacto muestra `CV próximamente` porque todavía no hay un archivo real para enlazar.
-- La sección de proyectos está en estado `próximamente` con un bloque visual en lugar de proyectos de ejemplo.
+- El CV se edita en `cv/cv-es.html` y `cv/cv-en.html`; `npm run cv` regenera los PDF en `public/cv/` (requiere Google Chrome).
+- Los proyectos destacados se cargan en `projects.items` dentro de `data/site-content.ts`.
 - El correo visible y de contacto actual es `contacto@ezequielgallardo.dev`.
 - El portfolio usa assets locales para evitar dependencias externas innecesarias.
