@@ -16,9 +16,9 @@ const localeMetadata: Record<
   }
 > = {
   es: {
-    title: "Ezequiel Gallardo | Desarrollador Web",
+    title: "Ezequiel Gallardo | Desarrollador Web Full Stack",
     description:
-      "Portafolio de Ezequiel Gallardo, desarrollador web y estudiante de Ingeniería en Sistemas. Interfaces claras, experiencias rápidas y productos web con base técnica sólida.",
+      "Ezequiel Gallardo, desarrollador web full stack. Aplicaciones con Next.js, React y TypeScript, del relevamiento al despliegue. Mirá el trabajo y escribime.",
     locale: "es_AR",
     keywords: [
       "Ezequiel Gallardo",
@@ -30,9 +30,9 @@ const localeMetadata: Record<
     ],
   },
   en: {
-    title: "Ezequiel Gallardo | Web Developer",
+    title: "Ezequiel Gallardo | Full Stack Web Developer",
     description:
-      "Portfolio of Ezequiel Gallardo, web developer and Systems Engineering student. Clear interfaces, fast experiences, and web products built on a solid technical foundation.",
+      "Ezequiel Gallardo, web developer. Apps with Next.js, React, TypeScript, and PostgreSQL, from requirements to deployment. See the work and get in touch.",
     locale: "en_US",
     keywords: [
       "Ezequiel Gallardo",
@@ -120,7 +120,7 @@ export default async function LocalePage({
     email: "contacto@ezequielgallardo.dev",
     sameAs: [
       "https://github.com/ezeGallardoo",
-      "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+      "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205",
     ],
   };
 

@@ -161,7 +161,7 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
                   src="/images/profile/perfil-960.jpg"
                   srcSet="/images/profile/perfil-960.jpg 960w, /images/profile/perfil-1440.jpg 1440w"
                   sizes="(max-width: 760px) 100vw, (max-width: 1080px) 70vw, 32vw"
-                  alt="Ezequiel Gallardo portrait"
+                  alt={locale === "es" ? "Retrato de Ezequiel Gallardo" : "Portrait of Ezequiel Gallardo"}
                   width={960}
                   height={953}
                   fetchPriority="high"

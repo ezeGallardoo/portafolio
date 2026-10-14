@@ -193,7 +193,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
       links: [
         {
           label: "LinkedIn",
-          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205",
         },
         { label: "GitHub", href: "https://github.com/ezeGallardoo" },
       ],
@@ -208,7 +208,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         { label: "GitHub", href: "https://github.com/ezeGallardoo" },
         {
           label: "LinkedIn",
-          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205",
         },
         { label: "contacto@ezequielgallardo.dev", href: "mailto:contacto@ezequielgallardo.dev" },
       ],
@@ -329,7 +329,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
       links: [
         {
           label: "LinkedIn",
-          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205",
         },
         { label: "GitHub", href: "https://github.com/ezeGallardoo" },
       ],
@@ -344,7 +344,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         { label: "GitHub", href: "https://github.com/ezeGallardoo" },
         {
           label: "LinkedIn",
-          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
+          href: "https://www.linkedin.com/in/ezequiel-gallardo-5a6162205",
         },
         { label: "contacto@ezequielgallardo.dev", href: "mailto:contacto@ezequielgallardo.dev" },
       ],
