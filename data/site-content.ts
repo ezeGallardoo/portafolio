@@ -191,7 +191,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         },
         {
           title: "GeoRadar — Demanda comercial",
-          period: "En desarrollo",
+          period: "2026",
           text: "Mesa de catastro para Villa María y Villa Nueva. Cruza comercios y el censo 2022 para marcar dónde hay demanda sin local. El suelo de IDECOR se ve en el mapa. La Central de Deudores del BCRA figura en la ficha de cada local.",
           highlights: [
             "PostgreSQL con PostGIS. La lógica espacial vive en SQL.",
@@ -199,7 +199,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
             "El consumo potencial sale de un modelo de Huff y compara locales. No hay ventas cargadas para contrastarlo.",
           ],
           tags: ["Next.js", "PostGIS", "MapLibre", "deck.gl", "Python"],
-          note: "En desarrollo · código público en GitHub",
+          note: "Código público en GitHub",
           href: "https://github.com/ezeGallardoo/geoecon-vm",
           image: {
             src: "/images/projects/georadar-map.svg",
@@ -365,7 +365,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         },
         {
           title: "GeoRadar — Commercial demand",
-          period: "In development",
+          period: "2026",
           text: "A commercial cadastre desk for Villa María and Villa Nueva. It crosses businesses and the 2022 census to mark where demand has no store. IDECOR land value shows on the map. The BCRA debtor registry shows on each store's card.",
           highlights: [
             "PostgreSQL with PostGIS. The spatial logic lives in SQL.",
@@ -373,7 +373,7 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
             "Potential consumption comes from a Huff model and compares stores. There are no recorded sales to check it against.",
           ],
           tags: ["Next.js", "PostGIS", "MapLibre", "deck.gl", "Python"],
-          note: "In development · public code on GitHub",
+          note: "Public code on GitHub",
           href: "https://github.com/ezeGallardoo/geoecon-vm",
           image: {
             src: "/images/projects/georadar-map.svg",
