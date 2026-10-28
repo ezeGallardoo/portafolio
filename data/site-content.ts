@@ -49,6 +49,11 @@ export type SiteContent = {
       highlights: string[];
       tags: string[];
       note: string;
+      href?: string;
+      image?: {
+        src: string;
+        alt: string;
+      };
     }>;
     statusBadge: string;
     statusTitle: string;
@@ -86,9 +91,9 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     connectLabel: "Conectar",
     navigation: [
       { href: "#home", label: "Inicio" },
+      { href: "#projects", label: "Proyectos" },
       { href: "#process", label: "Proceso" },
       { href: "#skills", label: "Destreza técnica" },
-      { href: "#projects", label: "Proyectos" },
       { href: "#contact", label: "Contacto" },
     ],
     hero: {
@@ -114,22 +119,22 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         {
           number: "01",
           title: "Descubrimiento",
-          text: "Reviso objetivos, contexto del proyecto y necesidades técnicas para entender qué se va a construir y por qué.",
+          text: "Objetivos, contexto y qué hay que construir.",
         },
         {
           number: "02",
           title: "Estrategia",
-          text: "Defino estructura, flujo, stack y prioridades para que el desarrollo tenga dirección desde el inicio.",
+          text: "Estructura, flujo, stack y prioridades.",
         },
         {
           number: "03",
           title: "Diseño y desarrollo",
-          text: "Construyo interfaces consistentes, componentes reutilizables y una experiencia cuidada tanto en desktop como en mobile.",
+          text: "Interfaces y componentes, en desktop y en mobile.",
         },
         {
           number: "04",
           title: "Optimización",
-          text: "Ajusto rendimiento, accesibilidad y detalles finales para entregar una web lista para salir a producción.",
+          text: "Rendimiento, accesibilidad y salida a producción.",
         },
       ],
     },
@@ -174,11 +179,45 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
           text: "Aplicación multiusuario para registrar ingresos y gastos, administrar cuentas, presupuestos por categoría y metas de ahorro.",
           highlights: [
             "API REST con Route Handlers de Next.js y Prisma sobre PostgreSQL.",
-            "Datos aislados por usuario y contraseñas cifradas con bcrypt.",
+            "Contraseñas cifradas con bcrypt y migraciones automáticas con Prisma.",
             "Dashboard de analítica y tests de la API con Vitest.",
           ],
           tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Vitest"],
           note: "Código privado · disponible a pedido",
+        },
+        {
+          title: "GeoRadar — Demanda comercial",
+          period: "En desarrollo",
+          text: "Mesa de catastro para Villa María y Villa Nueva. Cruza comercios, el censo 2022, el valor de suelo de IDECOR y la Central de Deudores del BCRA para marcar dónde hay demanda sin local.",
+          highlights: [
+            "PostgreSQL con PostGIS. La lógica espacial vive en SQL.",
+            "Visor con MapLibre GL y deck.gl sobre una grilla de 400 m.",
+            "El consumo potencial sale de un modelo de Huff. La ficha aclara que no es facturación.",
+          ],
+          tags: ["Next.js", "PostGIS", "MapLibre", "deck.gl", "Python"],
+          note: "En desarrollo · código público en GitHub",
+          href: "https://github.com/ezeGallardoo/geoecon-vm",
+          image: {
+            src: "/images/projects/georadar-map.svg",
+            alt: "",
+          },
+        },
+        {
+          title: "Canasta VM — Precios de góndola",
+          period: "2026",
+          text: "Buscás un producto y ves el precio de lista en cada supermercado de Villa María y Villa Nueva que lo publicó en Precios Claros. La canasta suma solo las sucursales que tienen todos los ítems.",
+          highlights: [
+            "Lee la API pública de Precios Claros, el catálogo diario del sistema SEPA.",
+            "Deja las sucursales de Villa María y Villa Nueva.",
+            "Una sucursal entra al total cuando publicó precio para cada producto.",
+          ],
+          tags: ["JavaScript", "Precios Claros", "SEPA"],
+          note: "Código público en GitHub",
+          href: "https://github.com/ezeGallardoo/canasta-vm",
+          image: {
+            src: "/images/projects/canasta.svg",
+            alt: "",
+          },
         },
       ],
       statusBadge: "En preparación",
@@ -222,9 +261,9 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
     connectLabel: "Connect",
     navigation: [
       { href: "#home", label: "Home" },
+      { href: "#projects", label: "Projects" },
       { href: "#process", label: "Process" },
       { href: "#skills", label: "Technical skills" },
-      { href: "#projects", label: "Projects" },
       { href: "#contact", label: "Contact" },
     ],
     hero: {
@@ -250,22 +289,22 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
         {
           number: "01",
           title: "Discovery",
-          text: "I review goals, context, and technical needs to understand what has to be built and why.",
+          text: "Goals, context, and what has to be built.",
         },
         {
           number: "02",
           title: "Strategy",
-          text: "I define structure, user flow, stack, and priorities so development starts with a clear direction.",
+          text: "Structure, flow, stack, and priorities.",
         },
         {
           number: "03",
           title: "Design and build",
-          text: "I craft consistent interfaces, reusable components, and a polished experience across desktop and mobile.",
+          text: "Interfaces and components, on desktop and mobile.",
         },
         {
           number: "04",
           title: "Optimization",
-          text: "I refine performance, accessibility, and final details so the product is ready for production.",
+          text: "Performance, accessibility, and a production release.",
         },
       ],
     },
@@ -310,11 +349,45 @@ export const siteContentByLocale: Record<Locale, SiteContent> = {
           text: "Multi-user app to track income and expenses, manage accounts, category budgets, and savings goals.",
           highlights: [
             "REST API built with Next.js Route Handlers and Prisma on PostgreSQL.",
-            "Per-user data isolation and bcrypt-hashed passwords.",
+            "bcrypt-hashed passwords and automatic Prisma migrations.",
             "Analytics dashboard and API tests with Vitest.",
           ],
           tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Vitest"],
           note: "Private code · available on request",
+        },
+        {
+          title: "GeoRadar — Commercial demand",
+          period: "In development",
+          text: "A commercial cadastre desk for Villa María and Villa Nueva. It crosses businesses, the 2022 census, IDECOR land values, and the BCRA debtor registry to mark where demand has no store.",
+          highlights: [
+            "PostgreSQL with PostGIS. The spatial logic lives in SQL.",
+            "A MapLibre GL and deck.gl viewer over a 400 m grid.",
+            "Potential consumption comes from a Huff model. The card states it is not revenue.",
+          ],
+          tags: ["Next.js", "PostGIS", "MapLibre", "deck.gl", "Python"],
+          note: "In development · public code on GitHub",
+          href: "https://github.com/ezeGallardoo/geoecon-vm",
+          image: {
+            src: "/images/projects/georadar-map.svg",
+            alt: "",
+          },
+        },
+        {
+          title: "Canasta VM — Shelf prices",
+          period: "2026",
+          text: "Search for a product and see the list price at each Villa María and Villa Nueva supermarket that published it on Precios Claros. The basket total includes only stores that carry every item.",
+          highlights: [
+            "It reads the public Precios Claros API, the daily SEPA catalog.",
+            "It keeps stores in Villa María and Villa Nueva.",
+            "A store joins the total when it published a price for every product.",
+          ],
+          tags: ["JavaScript", "Precios Claros", "SEPA"],
+          note: "Public code on GitHub",
+          href: "https://github.com/ezeGallardoo/canasta-vm",
+          image: {
+            src: "/images/projects/canasta.svg",
+            alt: "",
+          },
         },
       ],
       statusBadge: "In progress",

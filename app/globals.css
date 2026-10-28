@@ -972,6 +972,27 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   z-index: 1;
 }
 
+.featured-project__heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.featured-project__heading h3 {
+  margin-bottom: 0;
+}
+
+.featured-project__mark {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border: 1px solid rgba(124, 255, 107, 0.2);
+  border-radius: 12px;
+  background: #10140f;
+}
+
 .featured-project__period {
   display: block;
   margin-bottom: 14px;
@@ -998,6 +1019,12 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
 .featured-project__note {
   margin-top: 28px;
   font-size: 0.85rem;
+}
+
+a.featured-project__note {
+  display: inline-block;
+  color: inherit;
+  text-underline-offset: 3px;
 }
 
 html[data-theme="light"] .featured-project__period,

@@ -196,6 +196,107 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      <section className="projects" id="projects">
+        <div className="shell">
+          <div
+            className="section-heading section-heading--split section-heading--projects"
+            data-reveal
+            data-reveal-variant="fade-up"
+            data-reveal-once="true"
+          >
+            <h2>{siteContent.projects.title}</h2>
+            <div>
+              <p>{siteContent.projects.description}</p>
+              <a href={siteContent.projects.archiveHref} {...getLinkProps(siteContent.projects.archiveHref)}>
+                <span>{siteContent.projects.archiveCta}</span>
+                <span className="button__icon button__icon--inline" aria-hidden="true">
+                  <ArrowIcon />
+                </span>
+              </a>
+            </div>
+          </div>
+
+          {siteContent.projects.items.map((project) => (
+            <article
+              key={project.title}
+              className="skill-card featured-project"
+              data-reveal
+              data-reveal-variant="feature-rise"
+            >
+              <div className="featured-project__copy">
+                <span className="featured-project__period">{project.period}</span>
+                <div className="featured-project__heading">
+                  {project.image ? (
+                    <img
+                      className="featured-project__mark"
+                      src={project.image.src}
+                      alt=""
+                      width={40}
+                      height={40}
+                    />
+                  ) : null}
+                  <h3>{project.title}</h3>
+                </div>
+                <p>{project.text}</p>
+                <ul className="skill-card__tags">
+                  {project.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="featured-project__details">
+                <ul className="featured-project__highlights">
+                  {project.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+                {project.href ? (
+                  <a
+                    className="featured-project__note"
+                    href={project.href}
+                    {...getLinkProps(project.href)}
+                  >
+                    {project.note}
+                  </a>
+                ) : (
+                  <p className="featured-project__note">{project.note}</p>
+                )}
+              </div>
+            </article>
+          ))}
+
+          {/*
+          <article
+            className="projects-soon"
+            data-reveal
+            data-reveal-variant="feature-rise"
+            style={{ ["--reveal-delay" as string]: "80ms" }}
+          >
+            <div className="projects-soon__visual" aria-hidden="true">
+              <span className="projects-soon__ring projects-soon__ring--outer" />
+              <span className="projects-soon__ring projects-soon__ring--inner" />
+              <span className="projects-soon__core" />
+            </div>
+            <div className="projects-soon__copy">
+              <span>{siteContent.projects.statusBadge}</span>
+              <h3>{siteContent.projects.statusTitle}</h3>
+              <p>{siteContent.projects.statusText}</p>
+            </div>
+            <a
+              href={siteContent.projects.archiveHref}
+              className="button button--primary"
+              {...getLinkProps(siteContent.projects.archiveHref)}
+            >
+              {siteContent.projects.archiveCta}
+              <span className="button__icon" aria-hidden="true">
+                <ArrowIcon />
+              </span>
+            </a>
+          </article>
+          */}
+        </div>
+      </section>
+
       <section className="process" id="process">
         <div className="shell">
           <div
@@ -263,84 +364,6 @@ export function PortfolioShell({ locale }: { locale: Locale }) {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="projects" id="projects">
-        <div className="shell">
-          <div
-            className="section-heading section-heading--split section-heading--projects"
-            data-reveal
-            data-reveal-variant="fade-up"
-            data-reveal-once="true"
-          >
-            <h2>{siteContent.projects.title}</h2>
-            <div>
-              <p>{siteContent.projects.description}</p>
-              <a href={siteContent.projects.archiveHref} {...getLinkProps(siteContent.projects.archiveHref)}>
-                <span>{siteContent.projects.archiveCta}</span>
-                <span className="button__icon button__icon--inline" aria-hidden="true">
-                  <ArrowIcon />
-                </span>
-              </a>
-            </div>
-          </div>
-
-          {siteContent.projects.items.map((project) => (
-            <article
-              key={project.title}
-              className="skill-card featured-project"
-              data-reveal
-              data-reveal-variant="feature-rise"
-            >
-              <div className="featured-project__copy">
-                <span className="featured-project__period">{project.period}</span>
-                <h3>{project.title}</h3>
-                <p>{project.text}</p>
-                <ul className="skill-card__tags">
-                  {project.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="featured-project__details">
-                <ul className="featured-project__highlights">
-                  {project.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
-                <p className="featured-project__note">{project.note}</p>
-              </div>
-            </article>
-          ))}
-
-          <article
-            className="projects-soon"
-            data-reveal
-            data-reveal-variant="feature-rise"
-            style={{ ["--reveal-delay" as string]: "80ms" }}
-          >
-            <div className="projects-soon__visual" aria-hidden="true">
-              <span className="projects-soon__ring projects-soon__ring--outer" />
-              <span className="projects-soon__ring projects-soon__ring--inner" />
-              <span className="projects-soon__core" />
-            </div>
-            <div className="projects-soon__copy">
-              <span>{siteContent.projects.statusBadge}</span>
-              <h3>{siteContent.projects.statusTitle}</h3>
-              <p>{siteContent.projects.statusText}</p>
-            </div>
-            <a
-              href={siteContent.projects.archiveHref}
-              className="button button--primary"
-              {...getLinkProps(siteContent.projects.archiveHref)}
-            >
-              {siteContent.projects.archiveCta}
-              <span className="button__icon" aria-hidden="true">
-                <ArrowIcon />
-              </span>
-            </a>
-          </article>
         </div>
       </section>
 
